@@ -7,7 +7,7 @@ import "../css/app.css";
 
 InertiaProgress.init({
     delay: 0,
-    color: "#bdbab7",
+    color: "#161ef7",
     includeCSS: true,
     showSpinner: true,
 });

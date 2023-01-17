@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col-reverse md:grid md:grid-cols-12 gap-1 mt-9">
+    <div class="flex flex-col-reverse md:grid md:grid-cols-12 gap-1 mt-1">
         <div class="md:col-span-4 flex flex-col gap-1">
             <Box>
                 <div class="label">Property Information</div>

@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .label {
+        @apply block mb-1 text-gray-900 dark:text-black font-medium;
+    }
+
+    .input {
+        @apply bg-gray-200 border-none rounded-lg text-gray-900 font-semibold w-full;
+    }
+
+    .error {
+        @apply text-red-600 text-base font-normal;
+    }
+
+    .primary-button {
+        @apply w-full text-gray-200 text-base font-semibold bg-gray-700 rounded-full px-5 py-1.5 text-center hover:bg-gray-800;
+    }
+}

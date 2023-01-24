@@ -17,21 +17,27 @@
                         class="text-base font-bold font-nunito text-gray-600 pl-9"
                         >Properties</Link
                     >
-                    <Link
-                        :href="route('listing.create')"
-                        class="text-base font-bold font-nunito text-gray-600 pl-9"
-                    >
-                        Add new
-                    </Link>
                 </div>
                 <div v-if="user" class="flex text-white gap-4">
-                    <div>
+                    <Link
+                        :href="route('notification.index')"
+                        class="text-gray-800 relative pr-2 py-0 text-md"
+                    >
                         <i class="fas fa-bell mr-2 text-gray-500"></i>
-                    </div>
-                    <div class="mr-9 text-gray-500">
+                        <div
+                            v-if="notificationCount"
+                            class="absolute right-0 top-0 w-4 h-4 bg-red-400 text-white font-medium border-none rounded-full text-xs text-center"
+                        >
+                            {{ notificationCount }}
+                        </div>
+                    </Link>
+                    <Link
+                        class="text-gray-500"
+                        :href="route('realtor.listing.index')"
+                    >
                         <i class="fas fa-user mr-1 text-gray-500"></i
                         >{{ user.name }}
-                    </div>
+                    </Link>
                     <div>
                         <i class="fas fa-sign-out-alt mr-1 text-gray-500"></i>
                         <Link
@@ -83,4 +89,14 @@ import { computed } from "vue";
 const page = usePage();
 const successMessage = computed(() => page.props.value.flash.success);
 const user = computed(() => page.props.value.user);
+const notificationCount = computed(() =>
+    Math.min(page.props.value.user.notificationCount, 9)
+);
+
+// const btn = document.querySelector("button.mobile-menu-button");
+// const menu = document.querySelector(".mobile-menu");
+
+// btn.addEventListener("click", () => {
+//     menu.classList.toggle("hidden");
+// });
 </script>

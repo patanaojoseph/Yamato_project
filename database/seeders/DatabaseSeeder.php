@@ -21,15 +21,15 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'is_admin' => true
         ]);
-        \App\Models\User::factory()->create([
-            'name' => 'Test user-2',
-            'email' => 'test2@example.com',
-        ]);
-        \App\Models\Listing::factory(9)->create([
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Test user-2',
+        //     'email' => 'test2@example.com',
+        // ]);
+        \App\Models\Listing::factory(1)->create([
             'by_user_id' => 1
         ]);
-        \App\Models\Listing::factory(9)->create([
-            'by_user_id' => 2
-        ]);
+        // \App\Models\Listing::factory(1)->create([
+        //     'by_user_id' => 2
+        // ]);
     }
 }

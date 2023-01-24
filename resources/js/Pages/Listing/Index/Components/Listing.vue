@@ -21,19 +21,19 @@
                 <ListingAddress :listing="listing" />
             </Link>
         </div>
-        <div>
+        <!-- <div>
             <Link :href="route('listing.edit', { listing: listing.id })">
                 <i class="fas fa-edit text-gray-500"></i>
             </Link>
-        </div>
-        <div>
+        </div> -->
+        <!-- <div>
             <Link
                 :href="route('listing.destroy', { listing: listing.id })"
                 method="delete"
             >
                 <i class="fas fa-trash text-gray-500"></i>
             </Link>
-        </div>
+        </div> -->
     </Box>
 </template>
 

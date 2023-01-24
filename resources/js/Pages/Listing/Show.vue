@@ -72,9 +72,23 @@
                     </div>
                 </div>
             </Box>
+            <MakeOffer
+                v-if="user && !offerMade"
+                @offer-updated="offer = $event"
+                :listing-id="listing.id"
+                :price="listing.price"
+            />
+            <OfferMade v-if="user && offerMade" :offer="offerMade" />
         </div>
         <Box class="md:col-span-7 flex items-center w-full">
-            <div class="w-full text-center font-medium text-gray-500">
+            <div v-if="listing.images.length" class="grid grid-cols-2 gap-1">
+                <img
+                    v-for="image in listing.images"
+                    :key="image.id"
+                    :src="image.src"
+                />
+            </div>
+            <div v-else class="w-full text-center font-medium text-gray-500">
                 No images
             </div>
         </Box>
@@ -88,17 +102,27 @@ import Price from "@/Components/Price.vue";
 import Box from "@/Components/UI/Box.vue";
 import { ref } from "vue";
 import { useMonthlyPayment } from "@/Computation/useMonthlyPayment";
+import MakeOffer from "@/Pages/Listing/Show/Components/MakeOffer.vue";
+import { usePage } from "@inertiajs/inertia-vue3";
+import { computed } from "vue";
+import OfferMade from "./Show/Components/OfferMade.vue";
 
 const intRate = ref(2);
 const duration = ref(35);
 
 const props = defineProps({
     listing: Object,
+    offerMade: Object,
 });
 
+const offer = ref(props.listing.price);
+
 const { monthlyPayment, totalPaid, totalInterest } = useMonthlyPayment(
-    props.listing.price,
+    offer,
     intRate,
     duration
 );
+
+const page = usePage();
+const user = computed(() => page.props.value.user);
 </script>

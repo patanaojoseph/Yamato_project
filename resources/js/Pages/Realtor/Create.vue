@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="update">
+    <form @submit.prevent="create">
         <div class="flex bg-white">
             <div class="mx-auto">
                 <div>
@@ -7,7 +7,7 @@
                         <div class="flex">
                             <div class="flex-1 py-5 pl-5 overflow-hidden">
                                 <h1
-                                    class="inline text-2xl font-semibold leading-none text-black"
+                                    class="inline text-2xl font-semibold leading-none text-gray-500"
                                 >
                                     <i class="fas fa-info-circle"></i>
                                     Listing Information
@@ -86,17 +86,14 @@
                                 </div>
                             </div>
                             <div class="flex items-center">
-                                <label
-                                    for="Address"
-                                    class="block ml-2 text-sm text-gray-900"
-                                ></label>
+                                <label for="Address" class="label"></label>
                             </div>
                         </div>
 
                         <div class="flex">
                             <div class="flex-1 py-5 pl-5 overflow-hidden">
                                 <h1
-                                    class="inline text-2xl font-semibold leading-none text-black"
+                                    class="inline text-2xl font-semibold leading-none text-gray-500"
                                 >
                                     <i class="fas fa-location"></i>
                                     Address
@@ -186,13 +183,10 @@
                             <div class="flex w-1/4 pr-2">
                                 <button type="submit" class="primary-button">
                                     <i class="fas fa-save"></i>
-                                    <span class="pl-2 pr-9 mx-1">UPDATE</span>
+                                    <span class="pl-2 pr-9 mx-1">SAVE</span>
                                 </button>
                             </div>
                         </div>
-                        <!-- <div class="flex flex-row-reverse p-3">
-
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -203,22 +197,19 @@
 <script setup>
 import { useForm } from "@inertiajs/inertia-vue3";
 
-const props = defineProps({
-    listing: Object,
-});
-
 const form = useForm({
-    beds: props.listing.beds,
-    baths: props.listing.baths,
-    kitchen: props.listing.kitchen,
-    dinning: props.listing.dinning,
-    area: props.listing.area,
-    city: props.listing.city,
-    code: props.listing.code,
-    street: props.listing.street,
-    street_no: props.listing.street_no,
-    price: props.listing.price,
+    baths: 0,
+    beds: 0,
+    kitchen: 0,
+    dinning: 0,
+    area: 0,
+
+    city: null,
+    code: null,
+    street: null,
+    street_no: null,
+
+    price: 0,
 });
-const update = () =>
-    form.put(route("listing.update", { listing: props.listing.id }));
+const create = () => form.post(route("realtor.listing.store"));
 </script>

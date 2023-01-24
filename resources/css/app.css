@@ -38,4 +38,8 @@
     .filter-button {
         @apply font-nunito text-gray-200 text-base bg-gray-400 rounded-md px-5 py-1.5 text-center hover:bg-gray-600;
     }
+
+    .btn-outline {
+        @apply p-2 rounded-md border shadow-sm border-gray-100 hover:border-gray-200 hover:bg-gray-100;
+    }
 }
